@@ -1,4 +1,5 @@
 require 'omniauth-openid'
+require 'omniauth-google-apps'
 
 module Sinatra
   module GoogleAuth
@@ -29,7 +30,7 @@ module Sinatra
       raise "Must supply ENV var GOOGLE_AUTH_URL" unless ENV['GOOGLE_AUTH_URL']
       app.helpers GoogleAuth::Helpers
       app.use ::Rack::Session::Cookie, :secret => secret
-      app.use ::OmniAuth::Strategies::OpenID, :name => "google", :identifier => ENV['GOOGLE_AUTH_URL']
+      app.use ::OmniAuth::Strategies::GoogleApps, :name => "google", :domain => ENV['GOOGLE_AUTH_URL']
 
       app.get "/auth/:provider/callback" do
         handle_authentication_callback
