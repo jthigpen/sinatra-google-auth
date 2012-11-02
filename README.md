@@ -1,6 +1,6 @@
 # Sinatra::GoogleAuth
 
-Drop-in authentication for Sinatra with Google's OpenID endpoint.
+Drop-in authentication for Sinatra with Google Apps.
 
 ## Installation
 
@@ -91,14 +91,15 @@ end
 
 ### Google Endpoint
 
-Configure your Google OpenID endpoint via setting the ENV var `GOOGLE_AUTH_URL`
+Configure your Google Apps endpoint via setting the ENV var `GOOGLE_AUTH_URL`
 
-    $ export GOOGLE_AUTH_URL=http://myurl.com/openid
+    # if your Google Apps email address is me@mycompany.com then your auth URL is probably mycompany.com
+    $ export GOOGLE_AUTH_URL=mycompany.com
 
 or before requiring
 
 ```ruby
-ENV['GOOGLE_AUTH_URL'] = 'http://myurl.com/openid'
+ENV['GOOGLE_AUTH_URL'] = 'mycompany.com'
 
 require 'sinatra'
 require 'sinatra/google-auth'
